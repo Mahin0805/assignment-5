@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <nav class="navbar flex flex-col md:flex-row justify-around items-center bg-green-700 text-white sticky  top-0 py-5">
+        <button class="nav-button bg-green-400 text-black px-5 py-3 rounded-lg" id="blogBtn"><a
+                href="blog.html">Blog</a></button>
+
+        <div class="logo text-center inline-flex items-center space-x-3">
+            <img src="assets/logo.png" alt="">
+            <a href="" class="text-2xl">Donate Bangladesh</a>
+        </div>
+
+        <div class="account-balance">
+            <p class="bg-green-400 text-black px-5 py-3 rounded-lg flex space-x-2"><span><img src="assets/coin.png"
+                        alt=""></span>
+                <span id="balance">5555</span> BDT
+            </p>
+        </div>
+    </nav>
+
+    <div class="text-center py-5 md:sticky top-[88px] space-x-4 backdrop-blur-md ">
+        <button class="nav-button cursor-pointer border-2 rounded-md border-black px-5 py-4"
+            id="donationBtn">Donation</button>
+        <button class="nav-button cursor-pointer border-2 rounded-md border-black px-5 py-4"
+            id="historyBtn">History</button>
+    </div>
+
+    <div id="donationSection" class="md:w-[80vw] mx-auto">
+
+        <!-- Donation Card 1 -->
+        <div class="donation-card md:flex lg:flex-row flex-col items-center gap-16 border-2 rounded-2xl p-6 m-6">
+            <div>
+                <img src="assets/noakhali.png" alt="Donation Image">
+            </div>
+            <div class="lg:w-1/2 space-y-5">
+                <h3 class="text-xl font-bold" id="cause1">Donate for Flood at Noakhali, Bangladesh</h3>
+                <p>The floods in Noakhali, Bangladesh, have caused widespread destruction, displacing families and damaging homes, farmlands, and infrastructure. Thousands of people are in urgent need of basic supplies like food, clean water, and shelter. Your donation will directly support relief efforts, helping to provide essential resources to those affected. Every contribution makes a difference in rebuilding lives and restoring hope to the Noakhali community during this critical time.</p>
+                <div>
+                    <p>৳<span class="current-amount" id="amount1">0</span> BDT</p>
+                </div>
+                <div>
+                    <input type="number" id="input1" placeholder="Enter donation amount" class="w-full p-5 rounded-lg">
+                </div>
+                <div>
+                    <button class="donate-btn w-full bg-green-400 text-center py-3 rounded-lg"
+                        onclick="donate(1, 'Flood at Noakhali, Bangladesh')">Donate Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation Card 2 -->
+        <div class="donation-card md:flex lg:flex-row flex-col items-center gap-16 border-2 rounded-2xl p-6 m-6">
+            <div>
+                <img src="assets/feni.png" alt="Donation Image">
+            </div>
+            <div class="lg:w-1/2 space-y-5">
+                <h3 class="text-xl font-bold" id="cause2">Donate for Flood at Feni, Bangladesh</h3>
+                <p>The recent floods in Feni, Bangladesh, have left communities devastated, with homes destroyed and families displaced. Many are struggling to access essential supplies such as food, clean water, and medical care. Your donation will go directly towards supporting relief efforts, providing critical resources to those most affected. Every contribution, no matter the size, can help bring relief and hope to the people of Feni as they work to recover and rebuild their lives.</p>
+                <div>
+                    <p>৳<span class="current-amount" id="amount2">0</span> BDT</p>
+                </div>
+                <div>
+                    <input type="number" id="input2" placeholder="Enter donation amount" class="w-full p-5 rounded-lg">
+                </div>
+                <div>
+                    <button class="donate-btn w-full bg-green-400 text-center py-3 rounded-lg"
+                        onclick="donate(2, 'Flood at Feni, Bangladesh')">Donate Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation Card 3 -->
+        <div class="donation-card md:flex lg:flex-row flex-col items-center gap-16 border-2 rounded-2xl p-6 m-6 mb-40">
+            <div>
+                <img src="assets/quota-protest.png" alt="Donation Image">
+            </div>
+            <div class="lg:w-1/2 space-y-5">
+                <h3 class="text-xl font-bold" id="cause3">Aid for Injured in the Quota Movement</h3>
+                <p>The Quota Movement in Bangladesh has highlighted significant social issues, leading to protests that have resulted in injuries among demonstrators. Many individuals have faced physical harm, requiring urgent medical attention and support. Your donation to aid the injured will directly assist those who have suffered as a result of these protests. Contributions will help cover medical expenses, rehabilitation, and necessary supplies for recovery. Every donation, no matter the size, plays a crucial role in providing the essential care and support that these injured individuals need as they navigate their healing journey. Together, we can make a meaningful impact and show solidarity with those affected by the movement.</p>
+                <div>
+                    <p>৳<span class="current-amount" id="amount3">0</span> BDT</p>
+                </div>
+                <div>
+                    <input type="number" id="input3" placeholder="Enter donation amount" class="w-full p-5 rounded-lg">
+                </div>
+                <div>
+                    <button class="donate-btn w-full bg-green-400 text-center py-3 rounded-lg"
+                        onclick="donate(3, 'Flood at Feni, Bangladesh')">Donate Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="historySection" class="md:w-[80vw] mx-auto py-8">
+        <h2 class="text-2xl font-bold text-center mb-5">Donation History</h2>
+        <div id="historyList" class="space-y-4">
+
+        </div>
+    </div>
+
+    <!--  Modal -->
+    <input type="checkbox" id="donationModal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box">
+            <h2 class="font-bold text-lg">Donation Successful</h2>
+            <p>Your donation of $<span id="modalAmount"></span> BDT has been successfully processed!</p>
+            <div class="modal-action">
+                <label for="donationModal" class="btn">Close</label>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
